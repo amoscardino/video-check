@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using McMaster.Extensions.CommandLineUtils;
 using Spectre.Console;
 using VideoCheck.Services;
@@ -21,6 +22,7 @@ public class ScanCommand
 
     public async Task OnExecuteAsync(ScanService scanService, LogService logService, FileService fileService)
     {
+        var stopwatch = new Stopwatch();
         var inputPath = InputPath ?? Directory.GetCurrentDirectory();
 
         AnsiConsole.MarkupLine($"- Scanning: [bold]{inputPath}[/]");
@@ -39,10 +41,12 @@ public class ScanCommand
                 continue;
             }
 
+            stopwatch.Start();
             var error = await scanService.CheckFileAsync(inputPath, filePath, Minutes);
+            stopwatch.Stop();
 
             if (!string.IsNullOrWhiteSpace(error))
-                AnsiConsole.MarkupLine("\t\t[red]Error![/]");
+                AnsiConsole.MarkupLine($"\t\t[red]Error![/] ({stopwatch.Elapsed.ToString("mm:ss")})");
             else
                 AnsiConsole.MarkupLine("\t\t[green]Pass![/]");
 

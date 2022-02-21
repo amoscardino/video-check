@@ -11,8 +11,30 @@ namespace VideoCheck.Commands;
 [Subcommand(typeof(LogClearCommand), typeof(LogExportCommand))]
 public class LogCommand
 {
+    [Option("-a|--all", "Shows all records in the log, not just errors.", CommandOptionType.NoValue)]
+    public bool IncludeAll { get; set; }
+
     public void OnExecute(LogService logService)
     {
-        AnsiConsole.WriteLine("Log root!");
+        var scans = logService.ListScans(IncludeAll);
+
+        if (scans.Count == 0)
+        {
+            AnsiConsole.WriteLine("No scans to show.");
+            return;
+        }
+
+        var table = new Table();
+        table.AddColumns("File Name", "Success");
+
+        foreach (var scan in scans)
+        {
+            var fileName = Path.GetFileName(scan.FilePath);
+            var status = scan.HasError ? "[red]Fail[/]" : "[green]Pass[/]";
+
+            table.AddRow(fileName, status);
+        }
+
+        AnsiConsole.Write(table);
     }
 }

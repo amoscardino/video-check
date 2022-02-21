@@ -19,6 +19,16 @@ public class LogService : IDisposable
     public void Dispose()
         => _database.Dispose();
 
+    public List<Scan> ListScans(bool includeSuccess)
+    {
+        var collection = GetCollection();
+
+        return collection.Query()
+            .Where(x => includeSuccess || x.HasError)
+            .OrderBy(x => x.FilePath)
+            .ToList();
+    }
+
     public bool HasBeenScanned(string path)
     {
         var collection = GetCollection();
