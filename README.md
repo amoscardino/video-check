@@ -5,7 +5,7 @@ Command line tool for scanning video files for errors using ffmpeg and .NET 6.
 
 ## Requirements
 
-- [ffmpeg]()
+- [ffmpeg](https://ffmpeg.org)
 - [.NET 6](https://dotnet.microsoft.com)
 
 ## Installation
