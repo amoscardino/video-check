@@ -14,8 +14,8 @@ public class ScanCommand
     [Argument(0, "Input Path", "Path to scan. Defaults to current directory.")]
     public string? InputPath { get; set; }
 
-    [Option("-m|--minutes", "Number of minutes to check for each file. Defaults to 3.", CommandOptionType.SingleOrNoValue)]
-    public int Minutes { get; set; } = 3;
+    [Option("-m|--minutes", "Number of minutes to check for each file. Defaults to 2.", CommandOptionType.SingleOrNoValue)]
+    public int Minutes { get; set; } = 2;
 
     [Option("-r|--recurse", "Recursive scan. Will scan folders and subfolders of the Input Path.", CommandOptionType.NoValue)]
     public bool Recurse { get; set; }
