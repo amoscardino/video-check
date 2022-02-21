@@ -1,0 +1,45 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "${workspaceFolder}/VideoCheck.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "pack",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "pack",
+                "${workspaceFolder}/VideoCheck.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "build"
+            ]
+        },
+        {
+            "label": "install",
+            "command": "dotnet tool install -g --add-source ./dist VideoCheck",
+            "type": "shell",
+            "problemMatcher": "$msCompile",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "pack"
+            ]
+        },
+        {
+            "label": "uninstall",
+            "command": "dotnet tool uninstall -g VideoCheck",
+            "type": "shell",
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
