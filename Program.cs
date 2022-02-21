@@ -2,14 +2,22 @@
 using Microsoft.Extensions.DependencyInjection;
 using VideoCheck.Commands;
 using VideoCheck.Services;
+using Spectre.Console;
 
-var builder = Host
-    .CreateDefaultBuilder();
-
-builder.ConfigureServices((context, services) =>
+try
 {
-    services.AddTransient<LogService>();
-    services.AddTransient<ScanService>();
-});
+    var builder = Host.CreateDefaultBuilder();
 
-builder.RunCommandLineApplicationAsync<MainCommand>(args);
+    builder.ConfigureServices((context, services) =>
+    {
+        services.AddTransient<FileService>();
+        services.AddTransient<LogService>();
+        services.AddTransient<ScanService>();
+    });
+
+    await builder.RunCommandLineApplicationAsync<MainCommand>(args);
+}
+catch (Exception ex)
+{
+    AnsiConsole.WriteException(ex);
+}

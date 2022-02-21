@@ -11,14 +11,7 @@ namespace VideoCheck.Commands;
 [Subcommand(typeof(LogClearCommand), typeof(LogExportCommand))]
 public class LogCommand
 {
-    private readonly LogService _logService;
-
-    public LogCommand(LogService logService)
-    {
-        _logService = logService;
-    }
-
-    public void OnExecute(IConsole console)
+    public void OnExecute(LogService logService)
     {
         AnsiConsole.WriteLine("Log root!");
     }

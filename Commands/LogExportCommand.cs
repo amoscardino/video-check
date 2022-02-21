@@ -10,14 +10,7 @@ namespace VideoCheck.Commands;
 [HelpOption]
 public class LogExportCommand
 {
-    private readonly LogService _logService;
-
-    public LogExportCommand(LogService logService)
-    {
-        _logService = logService;
-    }
-    
-    public void OnExecute(IConsole console)
+    public void OnExecute(LogService logService)
     {
         AnsiConsole.WriteLine("Log export!");
     }

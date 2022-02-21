@@ -10,15 +10,9 @@ namespace VideoCheck.Commands;
 [HelpOption]
 public class LogClearCommand
 {
-    private readonly LogService _logService;
-
-    public LogClearCommand(LogService logService)
+    public void OnExecute(LogService logService)
     {
-        _logService = logService;
-    }
-    
-    public void OnExecute(IConsole console)
-    {
-        AnsiConsole.WriteLine("Log clear!");
+        logService.ClearScans();
+        AnsiConsole.WriteLine("Cleared!");
     }
 }
