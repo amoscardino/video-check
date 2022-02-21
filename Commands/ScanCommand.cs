@@ -46,9 +46,9 @@ public class ScanCommand
             stopwatch.Stop();
 
             if (!string.IsNullOrWhiteSpace(error))
-                AnsiConsole.MarkupLine($"\t\t[red]Error![/] ({stopwatch.Elapsed.ToString("mm:ss")})");
+                AnsiConsole.MarkupLine($"\t\t[red]Error![/] ({stopwatch.Elapsed:m\\:ss})");
             else
-                AnsiConsole.MarkupLine("\t\t[green]Pass![/]");
+                AnsiConsole.MarkupLine($"\t\t[green]Pass![/] ({stopwatch.Elapsed:m\\:ss})");
 
             logService.LogScan(filePath, error);
         }
