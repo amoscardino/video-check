@@ -50,6 +50,8 @@ public class ScanCommand
             else
                 AnsiConsole.MarkupLine($"\t\t[green]Pass![/] ({stopwatch.Elapsed:m\\:ss})");
 
+            stopwatch.Reset();
+
             logService.LogScan(filePath, error);
         }
 
