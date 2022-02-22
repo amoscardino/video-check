@@ -11,7 +11,7 @@ namespace VideoCheck.Commands;
 [HelpOption]
 public class ScanCommand
 {
-    [Argument(0, "Input Path", "Path to scan. Defaults to current directory.")]
+    [Argument(0, "InputPath", "Path to scan. Defaults to current directory.")]
     public string? InputPath { get; set; }
 
     [Option("-m|--minutes", "Number of minutes to check for each file. Defaults to 2.", CommandOptionType.SingleOrNoValue)]
