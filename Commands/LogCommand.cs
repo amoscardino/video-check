@@ -29,7 +29,7 @@ public class LogCommand
 
         foreach (var scan in scans)
         {
-            var fileName = Path.GetFileName(scan.FilePath);
+            var fileName = Path.GetFileName(scan.FilePath).EscapeMarkup();
             var status = scan.HasError ? "[red]Fail[/]" : "[green]Pass[/]";
 
             table.AddRow(fileName, status);

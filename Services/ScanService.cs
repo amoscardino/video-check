@@ -1,6 +1,5 @@
 using CliWrap;
 using CliWrap.Buffered;
-using Spectre.Console;
 
 namespace VideoCheck.Services;
 
@@ -15,7 +14,7 @@ public class ScanService
                 .Add("-i").Add(filePath)
                 .Add("-f").Add("null")
                 .Add("-"))
-            .WithWorkingDirectory(inputPath)
+            .WithValidation(CommandResultValidation.None)
             .ExecuteBufferedAsync();
 
         if (!string.IsNullOrWhiteSpace(result.StandardError))

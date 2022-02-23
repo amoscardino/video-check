@@ -1,6 +1,7 @@
 using ClosedXML.Excel;
 using McMaster.Extensions.CommandLineUtils;
 using Spectre.Console;
+using VideoCheck.Extensions;
 using VideoCheck.Services;
 
 namespace VideoCheck.Commands;
@@ -42,7 +43,7 @@ public class LogExportCommand
             FileName = Path.GetFileName(x.FilePath),
             Status = x.HasError ? "Fail" : "Success",
             FullPath = x.FilePath,
-            Error = x.Error
+            Error = x.Error.Truncate(150).Replace(Environment.NewLine, " ")
         }));
 
         ws.RangeUsed().AddConditionalFormat().WhenEquals("Fail").Fill.SetBackgroundColor(XLColor.Red);
