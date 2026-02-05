@@ -1,12 +1,12 @@
 
 # Video Check
 
-Command line tool for scanning video files for errors using ffmpeg and .NET 6.
+Command line tool for scanning video files for errors using ffmpeg and .NET 10.
 
 ## Requirements
 
 - [ffmpeg](https://ffmpeg.org) (must be available from the command line)
-- [.NET 6](https://dotnet.microsoft.com)
+- [.NET 10](https://dotnet.microsoft.com)
 
 ## Installation
 
@@ -15,7 +15,7 @@ Clone the repo to you computer. Pull to get updates. Open a command prompt to th
 If you are updating, remove the old version first:
 
 ```cmd
-> dotnet tool uninstall -g VideoCheck
+> dotnet tool uninstall -g video-check
 ```
 
 To install:
@@ -23,7 +23,7 @@ To install:
 ```cmd
 > dotnet build
 > dotnet pack
-> dotnet tool install -g --add-source ./dist VideoCheck
+> dotnet tool install -g --add-source ./dist video-check
 ```
 
 The tool will be available using the command `vcheck`.

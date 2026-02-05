@@ -46,7 +46,7 @@ public class LogExportCommand
             Error = x.Error.Truncate(150).Replace(Environment.NewLine, " ")
         }));
 
-        ws.RangeUsed().AddConditionalFormat().WhenEquals("Fail").Fill.SetBackgroundColor(XLColor.Red);
+        ws.RangeUsed()?.AddConditionalFormat().WhenEquals("Fail").Fill.SetBackgroundColor(XLColor.Red);
 
         var outputPath = OutputPath ?? Directory.GetCurrentDirectory();
         var exportPath = Path.Join(outputPath, "Scans.xlsx");

@@ -7,7 +7,7 @@
             "type": "shell",
             "args": [
                 "build",
-                "${workspaceFolder}/VideoCheck.csproj"
+                "${workspaceFolder}/video-check.csproj"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -17,7 +17,7 @@
             "type": "shell",
             "args": [
                 "pack",
-                "${workspaceFolder}/VideoCheck.csproj"
+                "${workspaceFolder}/video-check.csproj"
             ],
             "problemMatcher": "$msCompile",
             "dependsOrder": "sequence",
@@ -27,7 +27,7 @@
         },
         {
             "label": "install",
-            "command": "dotnet tool install -g --add-source ./dist VideoCheck",
+            "command": "dotnet tool install -g --add-source ./dist video-check",
             "type": "shell",
             "problemMatcher": "$msCompile",
             "dependsOrder": "sequence",
@@ -37,7 +37,7 @@
         },
         {
             "label": "uninstall",
-            "command": "dotnet tool uninstall -g VideoCheck",
+            "command": "dotnet tool uninstall -g video-check",
             "type": "shell",
             "problemMatcher": "$msCompile"
         }
